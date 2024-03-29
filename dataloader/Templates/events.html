@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events List</title>
+</head>
+<body>
+    <h1>All Events</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>City</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event.event_name }}</td>
+                <td>{{ event.city_name }}</td>
+                <td>{{ event.date }}</td>
+                <td>{{ event.time }}</td>
+                <td>{{ event.latitude }}</td>
+                <td>{{ event.longitude }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
