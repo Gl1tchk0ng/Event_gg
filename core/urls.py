@@ -5,4 +5,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('addevent/',views.add_event),
     path('events/', views.EventListView.as_view(), name='event_list'),
+    path('search_events/', views.search_events, name='search_events'),
 ]

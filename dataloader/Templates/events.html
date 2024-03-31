@@ -2,6 +2,20 @@
 <html>
 <head>
     <title>Events List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 10px; /* Adjust this value to increase/decrease spacing */
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
     <h1>All Events</h1>
@@ -22,7 +36,7 @@
             <tr>
                 <td>{{ event.event_name }}</td>
                 <td>{{ event.city_name }}</td>
-                <td>{{ event.date }}</td>
+                <td>{{ event.date|date:'Y-m-d' }}</td>
                 <td>{{ event.time }}</td>
                 <td>{{ event.latitude }}</td>
                 <td>{{ event.longitude }}</td>
