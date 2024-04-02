@@ -33,14 +33,18 @@
             <tr>
                 <th>Event Name</th>
                 <th>Date</th>
+                <th>Distance</th>
             </tr>
         </thead>
         <tbody>
             {% for event in events %}
+            {% for dist in distance %}
             <tr>
                 <td>{{ event.event_name }}</td>
                 <td>{{ event.date }}</td>
+                <td>{{ dist }}km</td>
             </tr>
+            {% endfor %}
             {% endfor %}
         </tbody>
     </table>
