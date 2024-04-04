@@ -122,4 +122,4 @@ For all available URL options demo and expected results, refer to [this video](<
 #### Cons
 - Async support for the DB (Django-ORM)is not yet available for real-time running so the performance factor is hindered when compared with node or any other JS framework or FastAPI (Since the project is focused on the async calling of DB items for the most part using celery or Django_channels was not an option but for other real-time connections like if the ORM is changed to something like SQLAlchemy then the performance might have increased a bit.)
 - Django HTML Template Engine(jinja2) is shit (Using React would be a better option)
-#### Pagination was not supported by the HTML and Django Templating due to the non-async support of the DB retrevial. 
+#### Pagination was not supported by the HTML and Django Templating due to the DB retrieval's non-async support, which led to multiple different functions. I mean I ain't saying it was impossible but on the frontend part it was not directly possible still working on a workaround but on the postman testing have achieved the pagination.
