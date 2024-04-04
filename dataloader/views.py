@@ -3,7 +3,7 @@ from django.urls import reverse
 from .forms import addevent, EventSearchForm
 from django.views.generic import TemplateView
 from .models import Eventdata
-from .dfilter import filter_events_by_date_range , dist_cal
+from .dfilter import filter_events_by_date_range , dist_cal, get_weather_data
 def add_event(request):
   if request.method == 'POST':
     form = addevent(request.POST)
@@ -31,18 +31,16 @@ def search_events(request):
             user_lon = form.cleaned_data['user_longitude']
             date = form.cleaned_data['date']
             events = filter_events_by_date_range(date)
-            #coordinates = get_event_co(date)
             distance = dist_cal(user_lat, user_lon ,date)
+            weather = get_weather_data(date)
             context = {
-                'events': events[:5],
-                #'coordinates': coordinates[:5],
-                'distance': distance[:5],
+                'events': events,
+                'distance': distance,
+                'weather': weather,
             }
             return render(request, 'search_events.html', context)
-
     else:
         form = EventSearchForm() 
-
     return render(request, 'search_events.html', {'form': form})
 
 

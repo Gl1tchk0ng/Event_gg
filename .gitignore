@@ -1,3 +1,4 @@
 venv
 gg_dataset.csv
 manage.py
+.env

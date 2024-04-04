@@ -1,57 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Search Events</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            padding: 20px; /* Adjust this value to increase/decrease spacing */
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+  <title>Search Events</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .row {
+      display: flex;
+    }
+
+    .column {
+      flex: 50%;
+      padding: 5px;
+    }
+
+    .tables-container {
+      display: flex;
+      justify-content: space-between; 
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 49%; 
+    }
+
+    th, td {
+      padding: 20px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
-    <h1>Search Events</h1>
+  <h1>Search Events</h1>
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Search</button>
-    </form>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+  </form>
 
-    {% if events %}
+  {% if events %}
     <h2>Search Results</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Event Name</th>
-                <th>Date</th>
-                <th>Distance</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for event in events %}
-            {% for dist in distance %}
-            <tr>
-                <td>{{ event.event_name }}</td>
-                <td>{{ event.date }}</td>
-                <td>{{ dist }}km</td>
-            </tr>
-            {% endfor %}
-            {% endfor %}
-        </tbody>
-    </table>
-    {% else %}
+    <div class="tables-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                <tr>
+                    <td>{{ event.event_name }}</td>
+                    <td>{{ event.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Distance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dist in distance %}
+                <tr>
+                    <td>{{ dist }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Weather</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for weathe in weather %}
+                <tr>
+                    <td>{{ weathe }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  {% else %}
     {% if form.is_bound %}
-    <p>No events found matching your criteria.</p>
+      <p>No events found matching your criteria.</p>
     {% endif %}
-    {% endif %}
+  {% endif %}
 </body>
 </html>

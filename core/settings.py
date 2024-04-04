@@ -27,7 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+import environ
+env = environ.Env()
+environ.Env.read_env()
 # Application definition
 
 INSTALLED_APPS = [
@@ -77,11 +79,11 @@ ASGI_APPLICATION = 'core.asgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd1',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',  
-        'PORT': '5432',  
+        'NAME': env("DATABASE_NAME"),
+        'USER': env("DATABASE_USER"),
+        'PASSWORD': env("DATABASE_PASSWORD"),
+        'HOST': env("DATABASE_HOST"),
+        'PORT': env("DATABASE_PORT"),
     }
 }
 

@@ -1,10 +1,10 @@
 from datetime import timedelta
 from .models import Eventdata
 import requests
-from django.http import JsonResponse
+from core import settings
 def filter_events_by_date_range(date):
     end_date = date + timedelta(days=14)
-    events_within_range = Eventdata.objects.filter(date__range=(date, end_date))
+    events_within_range = Eventdata.objects.filter(date__range=(date, end_date)).order_by('date')
     return events_within_range
 
 def get_event_co(date):
@@ -14,7 +14,7 @@ def get_event_co(date):
 
 def dist_cal(user_lat, user_lon, date):
   events = get_event_co(date)
-  distance_api_url = "https://gg-backend-assignment.azurewebsites.net/api/Distance?code=IAKvV2EvJa6Z6dEIUqqd7yGAu7IZ8gaH-a0QO6btjRc1AzFu8Y3IcQ=="
+  distance_api_url = settings.env('calulatorurl')
   distances = []
   for event in events:
     event_latitude, event_longitude = event
@@ -28,17 +28,27 @@ def dist_cal(user_lat, user_lon, date):
             print("Empty distance data received from API.")
     else:
         print(f"Error fetching distance for event: {response.status_code}")
-  return distances
+  return distances 
+  
+import requests
 
-#def get_weather_data(user_lat, user_lon, date):
-  Eve
-  weather_api_url = "https://gg-backend-assignment.azurewebsites.net/api/Weather?code=KfQnTWHJbg1giyB_Q9Ih3Xu3L9QOBDTuU5zwqVikZepCAzFut3rqsg=="
-  url = f"{weather_api_url}&city={city}&date={date}"
-  try:
-    response = requests.get(url)
-    response.raise_for_status()  
-    return response.json()
-  except requests.exceptions.RequestException as e:
-    print(f"Error fetching weather data for {city} on {date}: {e}")
-    return None
+def get_weather_data(date):
+    eventcoords = get_event_co(date)
+    weather_data = []
+    for event_latitude, event_longitude in eventcoords:
+        event_data = Eventdata.objects.get(latitude=event_latitude, longitude=event_longitude)
+        if event_data:
+            city_name = event_data.city_name  
+            weather_api_url = settings.env('weatherurl')
+            url = f"{weather_api_url}&city={city_name}&date={date}"
+            response = requests.get(url)
+            if response.status_code == 200:
+                data = response.json()
+                if data and "weather" in data:
+                    weather_data.append(data["weather"])
+                else:
+                    print("Empty weather data received from API.")
+            else:
+                print(f"Error fetching weather data for {city_name} on {date}: {response.text}")
+    return weather_data
 
