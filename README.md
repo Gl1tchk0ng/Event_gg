@@ -109,3 +109,17 @@ Run the server and follow the link
 python manage.py runserver
 ```
 For all available URL options demo and expected results, refer to [this video](<link>) which demonstrates them.
+
+## Teach stack info
+### Tech stack
+- Django
+- HTML
+- PostgreSQL
+### Stack Pros and Cons
+####Pros
+- Robust security and scalability are the main reasons for preferring Django over other web dev frameworks
+- PostgreSQL is a Relational Database and can be scaled with ease and maintainability is easy compared to nonrelational DBs
+#### Cons
+- Async support for the DB (Django-ORM)is not yet available for real-time running so the performance factor is hindered when compared with node or any other JS framework or FastAPI (Since the project is focused on the async calling of DB items for the most part using celery or Django_channels was not an option but for other real-time connections like if the ORM is changed to something like SQLAlchemy then the performance might have increased a bit.)
+- Django HTML Template Engine(jinja2) is shit (Using React would be a better option)
+#### Pagination was not supported by the HTML and Django Templating due to the non-async support of the DB retrevial. 
