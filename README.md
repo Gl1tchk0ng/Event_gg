@@ -116,7 +116,7 @@ For all available URL options demo and expected results, refer to [this video](<
 - HTML
 - PostgreSQL
 ### Stack Pros and Cons
-####Pros
+#### Pros
 - Robust security and scalability are the main reasons for preferring Django over other web dev frameworks
 - PostgreSQL is a Relational Database and can be scaled with ease and maintainability is easy compared to nonrelational DBs
 #### Cons
