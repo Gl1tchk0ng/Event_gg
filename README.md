@@ -104,4 +104,8 @@ DATABASE_PORT=5432
 ```
 ## Running the Server
 
-Run the server and follow the link. For available URL options and expected results, refer to [this video](<link>) which demonstrates all the URL options and expected results.
+Run the server and follow the link 
+```bash 
+python manage.py runserver
+```
+For all available URL options demo and expected results, refer to [this video](<link>) which demonstrates them.
