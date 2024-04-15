@@ -108,7 +108,7 @@ Run the server and follow the link
 ```bash 
 python manage.py runserver
 ```
-For all available URL options demo and expected results, refer to [this video](<link>) which demonstrates them.
+For all available URL options demo and expected results, refer to [https://drive.google.com/file/d/1VdlOc3ay_TIymhjy8OVAsk4NCNEhpOEP/view?usp=sharing](<link>) which demonstrates them.
 
 ## Teach stack info
 ### Tech stack
