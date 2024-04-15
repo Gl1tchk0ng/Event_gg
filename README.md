@@ -91,6 +91,8 @@ Install Docker from [here](<https://docs.docker.com/engine/install/>) if not alr
 9. ***Now all the endpoints can be accessed and the operations can be done as per requirement***
 ### Environment Variables Initialization
 
+
+
 In the root directory (core), create a file named `.env` and paste the following environment variables:
 
 ```plaintext
@@ -108,7 +110,7 @@ Run the server and follow the link
 ```bash 
 python manage.py runserver
 ```
-For all available URL options demo and expected results, refer to [https://drive.google.com/file/d/1VdlOc3ay_TIymhjy8OVAsk4NCNEhpOEP/view?usp=sharing](<link>) which demonstrates them.
+For all available URL options demo and expected results,https://github.com/Gl1tchk0ng/Event_gg/assets/155849958/316e2ab7-baed-4d53-b4ce-93c934ce779b
 
 ## Teach stack info
 ### Tech stack
